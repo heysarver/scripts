@@ -3,14 +3,14 @@ import csv
 
 # Connect to Postgres
 conn = psycopg2.connect(
-    host="your_host",
-    database="your_database",
-    user="your_username",
-    password="your_password"
+    host="localhost",
+    database="tasty",
+    user="app",
+    password="password"
 )
 
 # Open the CSV file and create a cursor
-csv_file = open('your_csv_file.csv')
+csv_file = open('data.csv')
 csv_reader = csv.DictReader(csv_file)
 
 # Get the column names from the first row of the CSV file
@@ -23,7 +23,7 @@ next(csv_reader)
 for row in csv_reader:
     values = [row[column_name] for column_name in column_names]
     cur = conn.cursor()
-    cur.execute("INSERT INTO your_table_name VALUES ({})".format(','.join(['%s']*len(column_names))), values)
+    cur.execute("INSERT INTO transactions VALUES ({})".format(','.join(['%s']*len(column_names))), values)
     conn.commit()
     cur.close()
 
