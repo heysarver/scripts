@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_IMAGE = 'bitnami/wordpress'
+        DOCKER_TAG = '6'
+    }
+
+    stages {
+        stage('Monitor Docker Image') {
+            steps {
+                script {
+                    // Get the creation date of the Docker image with a specific tag
+                    def imageCreationDate = sh(script: "docker inspect --format='{{.Created}}' ${DOCKER_IMAGE}:${DOCKER_TAG}", returnStdout: true).trim()
+                    def parsedImageCreationDate = new Date().parse("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", imageCreationDate)
+
+                    // Get the current date and time
+                    def currentDate = new Date()
+
+                    // Calculate the difference in hours between the current date and the image creation date
+                    def diffInHours = currentDate.getTime() - parsedImageCreationDate.getTime()
+                    diffInHours = diffInHours / (1000 * 60 * 60)
+
+                    // Check if the Docker image was updated or released in the last 24 hours
+                    if (diffInHours <= 24) {
+                        echo 'Docker image has been updated in the last 24 hours. Triggering build...'
+                        
+                        // Trigger the GitHub action
+                        sh '''
+                            curl -X POST -H "Authorization: token <your-github-token>" \
+                            -H "Accept: application/vnd.github.v3+json" \
+                            <workflow-dispatch-url>
+                        '''
+                    } else {
+                        echo 'No updates to Docker image in the last 24 hours.'
+                    }
+                }
+            }
+        }
+    }
+}
