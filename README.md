@@ -1,6 +1,6 @@
 # scripts
 Random scripts to do stuff.
 
-These are scripts I've created for myself for (1) functionality and (2) help me learn new languages using AI.
+These scripts were created for two main purposes: (1) to provide functionality, and (2) to help learn new programming languages using AI.
 
-Although I've tested everything in my environment (master branch works on my machine ```¯\_(ツ)_/¯```), use at your own risk in yours.
+While all scripts have been tested and work in my environment (the master branch works on my machine ¯\\_(ツ)_/¯), use them at your own risk in your environment.
