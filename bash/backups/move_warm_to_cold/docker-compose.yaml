@@ -1,0 +1,11 @@
+version: "3"
+services:
+  move_warm_to_cold:
+    build: .
+    volumes:
+      - ${SOURCE}:/src
+      - ${DESTINATION}:/dest
+    environment:
+      - SOURCE_DIR=/src
+      - DESTINATION_DIR=/dest
+    restart: always
