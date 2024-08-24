@@ -1,4 +1,7 @@
+#!/bin/bash
+
 pycat_for_ai () {
+
     local target_dir="${1:-$(pwd)}"
     shift
     local excludes=(
