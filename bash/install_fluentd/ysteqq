@@ -1,0 +1,6 @@
+○ fluentd.service - fluentd: All in one package of Fluentd
+     Loaded: loaded (]8;;file://nebula.sarvent.net/usr/lib/systemd/system/fluentd.service/usr/lib/systemd/system/fluentd.service]8;;; [0;1;38;5;185mdisabled[0m; preset: [0;1;38;5;185mdisabled[0m)
+     Active: inactive (dead)
+       Docs: ]8;;https://docs.fluentd.org/https://docs.fluentd.org/]8;;
+
+Nov 02 00:25:00 nebula.sarvent.net systemd[1]: [0;1;39m[0;1;31m[0;1;39m]8;;file://nebula.sarvent.net/usr/lib/systemd/system/fluentd.service/usr/lib/systemd/system/fluentd.service]8;;:19: PIDFile= references a path below legacy directory /var/run/, updating /var/run/fluent/fluentd.pid → /run/fluent/fluentd.pid; please update the unit file accordingly.[0m
