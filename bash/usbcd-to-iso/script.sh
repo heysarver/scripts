@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# macOS only
+
 # Initialize the disk variable
 disk=""
 
